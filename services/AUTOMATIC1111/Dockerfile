@@ -95,6 +95,7 @@ ENV CLI_ARGS=""
 RUN apt-get install -y zsh
 RUN chsh -s /bin/zsh
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/DE0CH/dotfiles/master/setup-zsh.sh)"
+RUN rm /root/.gitconfig
 
 ENTRYPOINT ["/docker/entrypoint.sh"]
 CMD python -u webui.py --listen --port 7860 ${CLI_ARGS}
