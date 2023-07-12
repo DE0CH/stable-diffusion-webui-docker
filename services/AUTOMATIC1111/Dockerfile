@@ -90,5 +90,11 @@ RUN \
 WORKDIR ${ROOT}
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV CLI_ARGS=""
+
+# dev stuff
+RUN apt-get install -y zsh
+RUN chsh -s /bin/zsh
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/DE0CH/dotfiles/master/setup-zsh.sh)"
+
 ENTRYPOINT ["/docker/entrypoint.sh"]
 CMD python -u webui.py --listen --port 7860 ${CLI_ARGS}
